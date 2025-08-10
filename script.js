@@ -31,7 +31,6 @@ function initialize(){
                     nameinInput = document.getElementById("Input-Name").value;
                     emailinINput = document.getElementById("Input-Email").value;
                     Button1();
-                    console.log('button 1 clicked');
                 } else {
                     return;
                 }
@@ -40,18 +39,12 @@ function initialize(){
                 inputSelection();
                 if(event.target.matches("button")){
                     Button2();
-                    console.log('button 2 clicked');
                 }
             }
             else if (currentStep === 3) {
                 if(event.target.matches("button")){
                     Button3();
-                    console.log('button 3 clicked');
                 }
-            
-            }
-            else{
-                console.log('couldn\'t do it');
             }
         });
     })
@@ -95,7 +88,6 @@ function Button1(){
         
         newClient = new page1Content(Name, Email);
         changePage1to2();
-        // currentStep++; 
         nameAndEmailSaveInPage3(newClient);
         return newClient;
         
@@ -115,13 +107,11 @@ function inputSelection(){
 }
 function inputSelectionCheck(){
     elementSelected = [];
-    // console.log(elementSelected);
     checkboxes.forEach((inputElement)=>{
         if(inputElement.nextElementSibling.classList == 'checkboxspan selectedSpan'){
             elementSelected.push(inputElement.nextElementSibling.innerHTML);
         }
     })
-    // console.log(elementSelected);
     return elementSelected;
 }
 function checkBoxesSaveInPage3(){
@@ -130,7 +120,6 @@ function checkBoxesSaveInPage3(){
         let newLi = document.createElement("li");
         newLi.append(element);
         checkboxUlInPage3.appendChild(newLi);
-        console.log(element);
     })
 }
 function Button2(){
@@ -138,16 +127,11 @@ function Button2(){
     if(elementSelected.length != 0){ //yani chizi select shode
         checkBoxesSaveInPage3();
         changePage2to3();
-        console.log("in button2");
-        console.log(elementSelected);
         return elementSelected;
     } else { //yani chizi select nashode
-        // console.log(elementSelected);
         alert("Please select at least one option!!");
     }
-    
 }
-
 function Button3(){
     alert('✅Success');
 }
@@ -161,8 +145,6 @@ function changePage2to3(){
     pages[1].style.display = 'none';
     pages[2].style.display = 'block';
     currentStep = 3;
-
-    console.log("in function changePage2to3");
     return currentStep;
 }
 
